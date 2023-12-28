@@ -1,4 +1,5 @@
 const Recipe = require("../models/Recipe");
+const mongoose = require('mongoose');
 
 const RecipeController = {
     index : async (req,res) => {
@@ -17,10 +18,16 @@ const RecipeController = {
     show : async (req,res) => {
         try {
             let id = req.params.id;
+            if(!mongoose.Types.ObjectId.isValid(id)) {
+                return res.status(400).json({ msg : 'not a valid id'});
+            }
             let recipe = await Recipe.findById(id);
+            if(!recipe) {
+                return res.status(404).json({ msg : 'recipe not found'});
+            }
             return res.json(recipe);
         }catch(e) {
-            return res.status(404).json({ msg : 'recipe not found.'});
+            return res.status(500).json({ msg : 'internet server error'});
         }
     },
     destroy : (req,res) => {
