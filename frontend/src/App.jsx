@@ -5,7 +5,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <div className='p-5 bg-[#f1f1f1] h-screen'>
+      <div className='p-5'>
         <Outlet />
       </div>
     </>

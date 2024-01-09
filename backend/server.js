@@ -3,6 +3,7 @@ require('dotenv').config()
 const morgan = require('morgan')
 const recipesRoutes = require('./routes/recipes');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const app = express();
 const mongoURL = "mongodb+srv://hlaingminthan:test1234@mern-cluster.cut3lbf.mongodb.net/?retryWrites=true&w=majority"
@@ -12,7 +13,7 @@ mongoose.connect(mongoURL).then(() => {
         console.log('app is running on localhost:'+process.env.PORT);
     })
 });
-
+app.use(cors());//local development --WARNING---
 app.use(express.json())
 app.use(morgan('dev'))
 
