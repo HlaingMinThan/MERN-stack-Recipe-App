@@ -4,6 +4,7 @@ import App from './App.jsx'
 import Home from './pages/Home.jsx';
 import About from './pages/About.jsx';
 import Contact from './pages/Contact.jsx';
+import RecipeForm from './pages/RecipeForm.jsx';
 
 import {
   createBrowserRouter,
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "/contact", //http://localhost:5173/contact
         element: <Contact />
+      },
+      {
+        path: "/recipes/create", //http://localhost:5173/recipes/create
+        element: <RecipeForm />
       },
     ]
   },
