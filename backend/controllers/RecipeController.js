@@ -3,7 +3,14 @@ const mongoose = require('mongoose');
 
 const RecipeController = {
     index : async (req,res) => {
-        let recipes = await Recipe.find().sort({createdAt : -1 });
+        let limit = 6;
+        let page = req.query.page || 1;
+        console.log(page);
+        let recipes = await Recipe
+        .find()
+        .skip((page - 1) * limit) // 12
+        .limit(limit)
+        .sort({createdAt : -1 });
         return res.json(recipes);
     },
     store : async (req,res) => {
