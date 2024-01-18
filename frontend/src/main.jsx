@@ -33,6 +33,10 @@ const router = createBrowserRouter([
         path: "/recipes/create", //http://localhost:5173/recipes/create
         element: <RecipeForm />
       },
+      {
+        path: "/recipes/edit/:id", //http://localhost:5173/recipes/edit/id
+        element: <RecipeForm />
+      },
     ]
   },
 ]);
